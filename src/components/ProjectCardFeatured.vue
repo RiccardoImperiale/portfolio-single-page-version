@@ -273,12 +273,12 @@ export default {
     object-fit: cover;
     object-position: top;
     display: block;
-    filter: blur(0) brightness(0.6);
+    filter: brightness(0.6);
     transition: transform .5s ease, filter .5s ease;
 }
 
 .imageHover {
     transform: scale(1.2) rotate(-10deg);
-    filter: blur(1.2px) brightness(1);
+    filter: brightness(1);
 }
 </style>

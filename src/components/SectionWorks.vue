@@ -47,7 +47,7 @@ export default {
         <ProjectsFeatured class="staggerWorksSection" />
 
         <!-- ALL PROJECTS LINK  -->
-        <router-link class="all_projects_link staggerWorksSection" :to="{ name: 'projects' }">
+        <!-- <router-link class="all_projects_link staggerWorksSection" :to="{ name: 'projects' }">
             <div class="link_container">
                 <span class="nav_link">see all projects</span>
                 <span class="nav_link">see all projects</span>
@@ -55,7 +55,7 @@ export default {
             <div class="dot_wrapper">
                 <div class="dot"></div>
             </div>
-        </router-link>
+        </router-link> -->
     </section>
     <GreetingsSection />
 </template>

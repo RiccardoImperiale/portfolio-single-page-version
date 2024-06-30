@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store.js'
-import axios from 'axios';
+import { projects } from '../projects.js'
 import ProjectCardFeatured from './ProjectCardFeatured.vue';
 
 export default {
@@ -11,42 +11,19 @@ export default {
     data() {
         return {
             base_projects_url: '/api/featured',
-            projects: [],
+            projects: projects,
             store,
             isImageBlur: false
         }
-    },
-    methods: {
-        callApi(url) {
-            store.loading = true
-            axios
-                .get(url)
-                .then(res => {
-                    this.projects = res.data.projects
-                    store.loading = false
-                })
-                .catch(err => console.error(err))
-        },
-    },
-    mounted() {
-        let url = store.base_api_url + this.base_projects_url;
-        this.callApi(url);
     }
 }
 </script>
 
 <template>
     <div class="container projects_container">
-        <div v-if="!store.loading" class="projects">
-            <template v-for="project in projects" :key="project.id">
-                <ProjectCardFeatured v-if="project.image.startsWith('/img/')" class="project_card"
-                    :imageSrc="store.base_api_url + project.image" />
-                <ProjectCardFeatured v-else class="project_card"
-                    :imageSrc="store.base_api_url + '/storage/' + project.image" />
-            </template>
-        </div>
-        <div class="loader" v-else>
-            Loading...
+        <div class="projects">
+            <ProjectCardFeatured v-for="project in projects" :key="project.id" class="project_card"
+                :imageSrc="project.src" />
         </div>
     </div>
 </template>
