@@ -82,9 +82,9 @@ export default {
 .bg-helper {
     background-color: var(--pf-gray-800);
     position: absolute;
-    height: 1900px;
+    top: 0;
+    height: 2900px;
     width: 100%;
-    bottom: -95rem;
     z-index: -1;
 }
 

@@ -20,24 +20,25 @@ export default {
         toggleInfoCircle() {
             this.isInfo = !this.isInfo;
         }
-    },
+    }
 }
 </script>
 
 <template>
     <div class="project_card" @mouseleave="isInfo = false">
         <div @mouseover="changeImageStyle(true)" @mouseleave="changeImageStyle(false)" class="btn_container">
-            <button class="btn">
+            <button class="btn" @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
                 <div class="logo">
                     <img width="25" src="/img/logo-gray100.png" alt="logo">
                 </div>
                 <div class="btn_in">
-                    <span class="text_left">Live Version</span>
-                    <span class="text_right">Source Code</span>
+                    <a :href="project.liveLink" class="text_left" target="_blank">Live Version</a>
+                    <a :href="project.sourceLink" class="text_right" target="_blank">Source Code</a>
                 </div>
             </button>
         </div>
-        <div @click="toggleInfoCircle" class="info_btn">
+        <div @click="toggleInfoCircle" @mouseover="store.isCursorHidden = true"
+            @mouseleave="store.isCursorHidden = false" class="info_btn">
             <div class="head">
                 <img v-if="!isInfo" width="18" src="/img/eye-open.png" alt="eye icon">
                 <img v-else width="18" src="/img/eye-close.png" alt="eye icon">
@@ -46,12 +47,11 @@ export default {
         <div :style="{ width: isInfo ? '110%' : '0' }" class="info_circle no_select">
             <div class="info_text">
                 <div class="title">
-                    titolo
+                    <span>{{ project.title }}</span>
                 </div>
                 <div class="dot"></div>
                 <div class="desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inve repellendus consectetur ad
-                    est, deleniti ut veritatis.
+                    <p>{{ project.description }}</p>
                 </div>
             </div>
         </div>
@@ -89,6 +89,8 @@ export default {
             color: var(--pf-gray-700);
             font-weight: 700;
             font-size: 1.2rem;
+            width: 50%;
+            text-align: center;
         }
 
         .dot {
@@ -197,6 +199,10 @@ export default {
             transform: translateX(-16px);
             transition: .3s ease;
 
+            a {
+                text-decoration: none;
+            }
+
             .text_left,
             .text_right {
                 font-family: "Syne", sans-serif;
@@ -268,6 +274,7 @@ export default {
 
 .project_image {
     width: 100%;
+    height: 100%;
     aspect-ratio: 1;
     object-fit: cover;
     object-position: top;
