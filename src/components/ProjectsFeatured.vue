@@ -23,7 +23,7 @@ export default {
     <div class="container projects_container">
         <div class="projects">
             <ProjectCardFeatured v-for="project in projects" :key="project.id" class="project_card"
-                :imageSrc="project.src" />
+                :project="project" />
         </div>
     </div>
 </template>

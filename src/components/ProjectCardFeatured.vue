@@ -4,7 +4,7 @@ import { store } from '../store';
 export default {
     name: 'ProjectCardFeatured',
     props: {
-        imageSrc: String
+        project: Object
     },
     data() {
         return {
@@ -19,7 +19,6 @@ export default {
         },
         toggleInfoCircle() {
             this.isInfo = !this.isInfo;
-            console.log('fwe');
         }
     },
 }
@@ -56,7 +55,7 @@ export default {
                 </div>
             </div>
         </div>
-        <img :class="{ imageHover: imageHover }" class="project_image" :src="imageSrc" alt="project cover image">
+        <img :class="{ imageHover: imageHover }" class="project_image" :src="project.src" alt="project cover image">
     </div>
 </template>
 
