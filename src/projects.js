@@ -11,9 +11,9 @@ export const projects = [
         id: 2,
         title: 'Weather App',
         src: '/img/projects/weather.png',
-        description: 'Vue application to monitor the current and future weather of selected cities developed by querying public APIs. Favourite cities can also be saved using Local Storage',
-        sourceLink: 'https://github.com/RiccardoImperiale/iPhone-website-clone',
-        liveLink: 'https://iphone15webclone.netlify.app/'
+        description: 'A Vue weather app developed by querying public APIs, with the ability to save favorite cities using Local Storage',
+        sourceLink: 'https://github.com/RiccardoImperiale/weather-app',
+        liveLink: 'https://wtr-app.netlify.app/'
     },
     {
         id: 3,
@@ -37,7 +37,7 @@ export const projects = [
         src: '/img/projects/boolflix.png',
         description: 'descrifwefjè',
         sourceLink: 'https://github.com/RiccardoImperiale/vite-boolflix',
-        liveLink: 'https://iphone15webclone.netlify.app/'
+        liveLink: 'https://boolflix-streaming.netlify.app/'
     },
     {
         id: 6,
