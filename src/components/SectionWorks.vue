@@ -47,15 +47,15 @@ export default {
         <ProjectsFeatured class="staggerWorksSection" />
 
         <!-- ALL PROJECTS LINK  -->
-        <div class="all_projects_link staggerWorksSection">
-            <!-- <div class="link_container">
+        <a href="https://github.com/RiccardoImperiale" class="all_projects_link" target="_blank">
+            <div class="link_container">
                 <span class="nav_link">see all projects</span>
                 <span class="nav_link">see all projects</span>
-            </div> -->
+            </div>
             <div class="dot_wrapper">
                 <div class="dot"></div>
             </div>
-        </div>
+        </a>
     </section>
     <GreetingsSection />
 </template>
@@ -90,11 +90,13 @@ export default {
     }
 
     .all_projects_link {
-        display: flex;
+        display: block;
+        height: 100%;
         text-decoration: none;
-        flex-direction: column;
         width: fit-content;
         margin: auto;
+        user-select: none;
+        cursor: pointer;
 
         .link_container {
             overflow: hidden;
