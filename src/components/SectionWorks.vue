@@ -47,15 +47,17 @@ export default {
         <ProjectsFeatured class="staggerWorksSection" />
 
         <!-- ALL PROJECTS LINK  -->
-        <a href="https://github.com/RiccardoImperiale" class="all_projects_link" target="_blank">
-            <div class="link_container">
-                <span class="nav_link">see all projects</span>
-                <span class="nav_link">see all projects</span>
-            </div>
-            <div class="dot_wrapper">
-                <div class="dot"></div>
-            </div>
-        </a>
+        <div class="all_projects_link">
+            <a href="https://github.com/RiccardoImperiale" target="_blank">
+                <div class="link_container_pill">
+                    <span class="nav_link">see all projects</span>
+                    <span class="nav_link">see all projects</span>
+                </div>
+                <div class="dot_wrapper">
+                    <div class="dot"></div>
+                </div>
+            </a>
+        </div>
     </section>
     <GreetingsSection />
 </template>
@@ -92,13 +94,16 @@ export default {
     .all_projects_link {
         display: block;
         height: 100%;
-        text-decoration: none;
         width: fit-content;
         margin: auto;
         user-select: none;
         cursor: pointer;
 
-        .link_container {
+        a {
+            text-decoration: none;
+        }
+
+        .link_container_pill {
             overflow: hidden;
             height: 55px;
             width: 220px;
@@ -107,6 +112,7 @@ export default {
             border-radius: 55px;
             background-color: var(--pf-gray-800);
             transition: .45s ease;
+            transform: translate(0px, 0px);
 
             &:hover {
                 background-color: transparent;

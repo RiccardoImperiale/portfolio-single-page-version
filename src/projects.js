@@ -19,7 +19,7 @@ export const projects = [
         id: 3,
         title: 'iPhone 15 Clone',
         src: '/img/projects/iphone.png',
-        description: 'Replica of an iPhone showcase page featuring a 3D model integrated using Vue and TresJs',
+        description: 'Replica of the iPhone showcase page featuring a 3D model integrated using Vue and TresJs',
         sourceLink: 'https://github.com/RiccardoImperiale/iPhone-website-clone',
         liveLink: 'https://iphone15webclone.netlify.app/'
     },
