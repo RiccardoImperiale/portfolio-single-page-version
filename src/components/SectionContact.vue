@@ -80,6 +80,7 @@ export default {
         validate(field) {
             if (field === 'name') {
                 if (this.name) {
+                    this.errors.name = ''
                     this.nameSuccess = true
                 } else {
                     this.errors.name = 'enter a name'
@@ -90,6 +91,7 @@ export default {
             if (field === 'email') {
                 const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if (this.email && mailRegex.test(this.email)) {
+                    this.errors.email = ''
                     this.emailSuccess = true
                 } else {
                     this.errors.email = 'enter a valid email'
@@ -99,6 +101,7 @@ export default {
 
             if (field === 'message') {
                 if (this.message) {
+                    this.errors.message = ''
                     this.messageSuccess = true
                 } else {
                     this.errors.message = 'enter a message'
