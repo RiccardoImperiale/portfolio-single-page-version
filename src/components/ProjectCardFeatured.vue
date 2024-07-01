@@ -105,8 +105,6 @@ export default {
             text-align: center;
             font-size: .9rem;
             width: 70%;
-            padding-top: .3rem;
-
         }
     }
 }

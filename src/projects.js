@@ -35,7 +35,7 @@ export const projects = [
         id: 5,
         title: 'Boolflix',
         src: '/img/projects/boolflix.png',
-        description: 'descrifwefjè',
+        description: 'A Vue application inspired by Netflix that lists movies and TV series fetched from an API.',
         sourceLink: 'https://github.com/RiccardoImperiale/vite-boolflix',
         liveLink: 'https://boolflix-streaming.netlify.app/'
     },
