@@ -43,16 +43,16 @@ export const textSlideLoop = (el, updateDirection) => {
 
 export const animateHeader = (el, links) => {
     ScrollTrigger.create({
-        start: "120px top top",
+        start: "100px top top",
         scrub: true,
         ease: 'power2.inOut',
         onEnter: () => {
-            gsap.to(el, { y: -100, duration: 1 });
-            gsap.to(links, { y: -100, duration: 1, stagger: 0.1 });
+            gsap.to(el, { y: -100, duration: 0.6 });
+            gsap.to(links, { y: -100, duration: 0.6, stagger: 0.1 });
         },
         onLeaveBack: () => {
-            gsap.to(el, { y: 0, autoAlpha: 1, duration: 0.5 });
-            gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.1 });
+            gsap.to(el, { y: 0, autoAlpha: 1, duration: 0.6 });
+            gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1 });
         },
     });
 }
