@@ -8,7 +8,6 @@ export default {
     data() {
         return {
             store,
-            fields: ['name', 'email', 'message'],
             nameSuccess: null,
             emailSuccess: null,
             messageSuccess: null,
@@ -27,25 +26,29 @@ export default {
     },
     methods: {
         sendMessage() {
+            this.validate('message')
+
             this.isLoading = true
-            emailjs
-                .sendForm(
-                    process.env.VUE_APP_SERVICE_ID,
-                    process.env.VUE_APP_TEMPLATE_ID,
-                    this.$refs.form,
-                    process.env.VUE_APP_PUBLIC_KEY
-                )
-                .then(() => {
-                    console.log('SUCCESS!');
-                    this.success = true;
-                    this.formReset();
-                }, (error) => {
-                    console.log('FAILED...', error.text);
-                    this.success = false;
-                })
-                .finally(() => {
-                    this.isLoading = false;
-                });
+            if (this.nameSuccess && this.emailSuccess && this.messageSuccess) {
+                emailjs
+                    .sendForm(
+                        import.meta.env.VITE_SERVICE_ID,
+                        import.meta.env.VITE_TEMPLATE_ID,
+                        this.$refs.form,
+                        import.meta.env.VITE_PUBLIC_KEY
+                    )
+                    .then(() => {
+                        console.log('SUCCESS!');
+                        this.success = true;
+                        this.formReset();
+                    }, (error) => {
+                        console.log('FAILED...', error.text);
+                        this.success = false;
+                    })
+                    .finally(() => {
+                        this.isLoading = false;
+                    });
+            }
         },
         nextStep() {
             this.stepCount++;
@@ -61,21 +64,47 @@ export default {
             this.nameSuccess = null
             this.emailSuccess = null
             this.messageSuccess = null
+            this.errors = {}
         },
         updateTranslation() {
             if (this.stepCount === 0) {
                 this.translation = 'translateX(0%)';
             } else if (this.stepCount === 1) {
                 this.translation = 'translateX(-100%)';
+                this.validate('name')
             } else {
                 this.translation = 'translateX(-200%)';
+                this.validate('email')
             }
         },
-        validate() {
-            const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            this.name.length > 0 ? this.nameSuccess = true : this.nameSuccess = false;
-            this.email.length > 0 && mailRegex.test(this.email) ? this.emailSuccess = true : this.emailSuccess = false;
-            this.message.length > 0 ? this.messageSuccess = true : this.messageSuccess = false;
+        validate(field) {
+            if (field === 'name') {
+                if (this.name) {
+                    this.nameSuccess = true
+                } else {
+                    this.errors.name = 'enter a name'
+                    this.nameSuccess = false;
+                }
+            }
+
+            if (field === 'email') {
+                const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (this.email && mailRegex.test(this.email)) {
+                    this.emailSuccess = true
+                } else {
+                    this.errors.email = 'enter a valid email'
+                    this.emailSuccess = false;
+                }
+            }
+
+            if (field === 'message') {
+                if (this.message) {
+                    this.messageSuccess = true
+                } else {
+                    this.errors.message = 'enter a message'
+                    this.messageSuccess = false;
+                }
+            }
         },
         setStep(step) {
             this.stepCount = step;
@@ -89,7 +118,7 @@ export default {
     <section id="contact">
         <div v-if="success" class="success_message no_select" @mouseover="store.isCursorHidden = true"
             @mouseleave="store.isCursorHidden = false">
-            <h4>{{ success }}</h4>
+            <h4>Your Message has beeing sent. 🙂</h4>
             <div class="close" @click="success = false">X</div>
         </div>
         <div class="container">
@@ -112,11 +141,11 @@ export default {
                     </div>
                     <!-- INPUT -->
                     <div :style="{ transform: translation }" class="slides">
-                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="name" name="name" class="slide"
-                            type="text" placeholder="Type Your Name...">
-                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="email" name="email" class="slide"
-                            type="text" placeholder="Type Your Email...">
-                        <input @keyup="validate()" v-model="message" name="message" class="slide" type="text"
+                        <input @keyup="validate('name')" @keyup.enter="nextStep()" v-model="name" name="name"
+                            class="slide" type="text" placeholder="Type Your Name...">
+                        <input @keyup="validate('email')" @keyup.enter="nextStep()" v-model="email" name="email"
+                            class="slide" type="text" placeholder="Type Your Email...">
+                        <input @keyup="validate('message')" v-model="message" name="message" class="slide" type="text"
                             placeholder="Type Your Message...">
                     </div>
                 </div>
@@ -320,7 +349,7 @@ input:-webkit-autofill:focus {
     /* backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(10px); */
     position: absolute;
-    top: 5rem;
+    top: 1rem;
     height: 4rem;
     width: 60%;
     border-radius: .5rem;
