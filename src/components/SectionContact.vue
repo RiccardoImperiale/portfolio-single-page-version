@@ -1,7 +1,7 @@
 <script>
 import BouncyLine from "./BouncyLine.vue";
 import { store } from '../store.js'
-import axios from "axios";
+import emailjs from '@emailjs/browser';
 
 export default {
     name: 'SectionContact',
@@ -28,32 +28,24 @@ export default {
     methods: {
         sendMessage() {
             this.isLoading = true
-
-            const data = {
-                name: this.name,
-                email: this.email,
-                message: this.message
-            }
-            const url = store.base_api_url + '/api/contacts'
-
-            axios.post(url, data)
-                .then(res => {
-                    if (res.data.success) {
-                        this.success = res.data.message
-                        this.errors = false
-                        this.formReset();
-                    } else {
-                        this.errors = res.data.errors;
-
-                        this.fields.forEach(field => {
-                            if (res.data.errors[field]) {
-                                this.errors[field] = res.data.errors[field][0]
-                            }
-                        })
-                    }
-                    this.isLoading = false
+            emailjs
+                .sendForm(
+                    process.env.VUE_APP_SERVICE_ID,
+                    process.env.VUE_APP_TEMPLATE_ID,
+                    this.$refs.form,
+                    process.env.VUE_APP_PUBLIC_KEY
+                )
+                .then(() => {
+                    console.log('SUCCESS!');
+                    this.success = true;
+                    this.formReset();
+                }, (error) => {
+                    console.log('FAILED...', error.text);
+                    this.success = false;
                 })
-                .catch(err => console.error(err))
+                .finally(() => {
+                    this.isLoading = false;
+                });
         },
         nextStep() {
             this.stepCount++;
@@ -113,7 +105,7 @@ export default {
                 </div>
             </div>
             <!-- FORM -->
-            <form @submit.prevent="sendMessage()" autocomplete="off">
+            <form ref="form" @submit.prevent="sendMessage()" autocomplete="off">
                 <div class="form_inputs">
                     <div class="line">
                         <BouncyLine lineColor="var(--pf-gray-300)" />
