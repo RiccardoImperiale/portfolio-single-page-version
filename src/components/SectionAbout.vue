@@ -47,14 +47,16 @@ export default {
             </div>
         </div>
 
-        <div id="zzz" ref="button" class="btn_wrapper">
-            <button class="btn">
-                <div class="btn_in">
-                    <!-- <span class="text_left">Download</span> -->
-                    <img width="25" src="/img/logo-gray100.png" alt="">
-                    <span class="text_right">Download Full CV</span>
-                </div>
-            </button>
+        <div ref="button" class="btn_wrapper">
+            <form method="get" action="/cv.pdf" target="_blank">
+                <button type="submit" class="btn">
+                    <div class="btn_in">
+                        <img width="25" src="/img/logo-gray100.png" alt="">
+                        <span class="text_right">Download Full CV</span>
+                    </div>
+                </button>
+            </form>
+
         </div>
 
         <!-- logos -->
