@@ -67,7 +67,7 @@ export default {
     <section class="splide" aria-label="Beautiful Logos">
         <div class="splide__track">
             <ul class="splide__list">
-                <SplideSlide v-for="n in 14" :key="n">
+                <SplideSlide v-for="n in 15" :key="n">
                     <div class="slide_container">
                         <img :src="`/img/logos/logo${n}.png`" alt="Sample Image">
                     </div>
