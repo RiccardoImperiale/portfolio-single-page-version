@@ -32,8 +32,15 @@ export default {
                     <img width="25" src="/img/logo-gray100.png" alt="logo">
                 </div>
                 <div class="btn_in">
-                    <a :href="project.liveLink" class="text_left" target="_blank">Live Version</a>
-                    <a :href="project.sourceLink" class="text_right" target="_blank">Source Code</a>
+                    <a v-if="project.liveLink" :href="project.liveLink" class="text_left" target="_blank">Live
+                        Version</a>
+                    <a v-else :href="project.liveLink" class="text_left not_available" target="_blank">Live
+                        Version</a>
+
+
+
+                    <a :href="project.sourceLink" class="text_right" target="_blank">Source
+                        Code</a>
                 </div>
             </button>
         </div>
@@ -130,16 +137,6 @@ export default {
         justify-content: center;
         font-size: 1.5rem;
     }
-
-    /* .title {
-        position: absolute;
-        z-index: 3;
-        bottom: 0;
-        width: 100%;
-        font-weight: 700;
-        font-size: 0.9rem;
-        color: var(--pf-gray-800);
-    } */
 }
 
 
@@ -244,6 +241,14 @@ export default {
             .text_right {
                 transform: translateX(150px);
             }
+
+            .not_available {
+                text-decoration: line-through;
+                pointer-events: none;
+                cursor: default;
+                color: var(--pf-gray-200);
+            }
+
         }
 
         &:hover {
