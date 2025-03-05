@@ -48,14 +48,14 @@ export default {
         </div>
 
         <div ref="button" class="btn_wrapper">
-            <form method="get" action="/cv.pdf" target="_blank">
+            <div>
                 <button type="submit" class="btn">
                     <div class="btn_in">
                         <img width="25" src="/img/logo-gray100.png" alt="">
                         <span class="text_right">Download Full CV</span>
                     </div>
                 </button>
-            </form>
+            </div>
 
         </div>
 
@@ -116,6 +116,7 @@ export default {
         transform: translateX(50px);
         transition: .5s ease;
         font-size: 1rem;
+        text-decoration: line-through;
     }
 
     &:hover {
