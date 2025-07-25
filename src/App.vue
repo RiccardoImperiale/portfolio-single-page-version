@@ -1,14 +1,14 @@
 <script>
-import AppHeader from './components/AppHeader.vue'
-import CustomCursor from './components/CustomCursor.vue'
-import AppHero from './components/AppHero.vue'
-import SectionAbout from './components/SectionAbout.vue'
-import SectionWorks from './components/SectionWorks.vue'
-import AnimationEnd from './components/AnimationEnd.vue'
-import SectionContact from './components/SectionContact.vue'
+import AppHeader from "./components/AppHeader.vue";
+import CustomCursor from "./components/CustomCursor.vue";
+import AppHero from "./components/AppHero.vue";
+import SectionAbout from "./components/SectionAbout.vue";
+import SectionWorks from "./components/SectionWorks.vue";
+import AnimationEnd from "./components/AnimationEnd.vue";
+import SectionContact from "./components/SectionContact.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AppHeader,
     CustomCursor,
@@ -16,27 +16,27 @@ export default {
     SectionAbout,
     SectionWorks,
     AnimationEnd,
-    SectionContact
+    SectionContact,
   },
   data() {
     return {
-      loading: true
-    }
+      loading: true,
+    };
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false
-    }, 1500)
-  }
-}
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.loading = false
+  //   }, 1500)
+  // }
+};
 </script>
 
 <template>
-  <div v-if="loading" class="loader">
+  <!-- <div v-if="loading" class="loader">
     <p>Loading...</p>
-  </div>
+  </div> -->
 
-  <div v-else>
+  <div>
     <AppHeader />
     <AppHero />
     <SectionAbout />
