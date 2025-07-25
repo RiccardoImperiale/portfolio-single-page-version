@@ -37,7 +37,6 @@ export default {
 <style scoped>
 #hero {
     background-color: #d4d4d4;
-    /* background-color: #929292; */
     height: 900px;
     overflow: hidden;
     display: flex;

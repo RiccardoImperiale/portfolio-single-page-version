@@ -26,8 +26,8 @@ export const projects = [
         title: 'Just Todo It',
         src: '/img/projects/todoit.png',
         description: 'React Todo List Featuring Local Storage and Framer Motion Animations',
-        sourceLink: 'https://github.com/RiccardoImperiale/react-todolist',
-        liveLink: 'https://reactjusttodoit.netlify.app/'
+        sourceLink: 'https://github.com/RiccardoImperiale/just-todo-it',
+        liveLink: 'https://just-todo-it-web.netlify.app/'
     },
 
     {
